@@ -1,0 +1,17 @@
+{
+  "snapshots": [
+    {
+      "id": "fleet-clean",
+      "name": "Clean override fleet",
+      "scope": "FLEET",
+      "readinessStatus": "HEALTHY",
+      "snapshotStatus": "CURRENT",
+      "controlPath": "/fleets/clean/override-readiness",
+      "supervisorCount": 4,
+      "owner": "Robotics Operations",
+      "drillCount": 4,
+      "collectedAt": "2026-05-30T12:00:00Z"
+    }
+  ],
+  "gaps": []
+}

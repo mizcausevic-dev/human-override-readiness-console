@@ -1,0 +1,102 @@
+{
+  "snapshots": [
+    {
+      "id": "fleet-warehouse",
+      "name": "Warehouse autonomy fleet",
+      "scope": "FLEET",
+      "readinessStatus": "WATCH",
+      "snapshotStatus": "CURRENT",
+      "controlPath": "/fleets/warehouse-a/override-readiness",
+      "supervisorCount": 6,
+      "owner": "Robotics Operations",
+      "drillCount": 4,
+      "collectedAt": "2026-05-30T14:00:00Z"
+    },
+    {
+      "id": "route-yard",
+      "name": "Yard inspection route set",
+      "scope": "ROUTE",
+      "readinessStatus": "CRITICAL",
+      "snapshotStatus": "STALE",
+      "controlPath": "/routes/yard-west/override-readiness",
+      "supervisorCount": 2,
+      "owner": "Field Robotics Ops",
+      "drillCount": 1,
+      "collectedAt": "2026-05-27T09:20:00Z"
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-supervisor-coverage",
+      "snapshotId": "route-yard",
+      "resourcePath": "yard-west / after-hours supervisor rotation",
+      "scope": "SUPERVISOR_GROUP",
+      "controlFamily": "Supervisor",
+      "status": "DEGRADED",
+      "expectedState": "Two independent supervisors remain reachable for every live route window.",
+      "observedState": "Only one on-call supervisor is available during the overnight window.",
+      "gapWindowHours": 18,
+      "blocksOverride": true
+    },
+    {
+      "id": "gap-kill-switch-drill",
+      "snapshotId": "route-yard",
+      "resourcePath": "yard-west emergency stop drill",
+      "scope": "ROUTE",
+      "controlFamily": "Drill",
+      "status": "CHANGED",
+      "expectedState": "Emergency stop drill refreshed within the last 14 days.",
+      "observedState": "Last successful drill is 39 days old.",
+      "gapWindowHours": 39,
+      "blocksOverride": true
+    },
+    {
+      "id": "gap-telemetry-blind-zone",
+      "snapshotId": "fleet-warehouse",
+      "resourcePath": "dock-17 manual takeover telemetry",
+      "scope": "CELL",
+      "controlFamily": "Telemetry",
+      "status": "DEGRADED",
+      "expectedState": "Operator video and command telemetry remain visible through takeover.",
+      "observedState": "Video feed drops during the first 12 seconds of manual override.",
+      "gapWindowHours": 12,
+      "blocksOverride": true
+    },
+    {
+      "id": "gap-takeover-latency",
+      "snapshotId": "fleet-warehouse",
+      "resourcePath": "picker-cluster north / manual takeover timing",
+      "scope": "ROBOT",
+      "controlFamily": "Latency",
+      "status": "CHANGED",
+      "expectedState": "Median operator takeover stays under 4 seconds.",
+      "observedState": "Median operator takeover rose to 7.2 seconds during congestion.",
+      "gapWindowHours": 9,
+      "blocksOverride": false
+    },
+    {
+      "id": "gap-training-stale",
+      "snapshotId": "fleet-warehouse",
+      "resourcePath": "warehouse override certification cohort",
+      "scope": "SUPERVISOR_GROUP",
+      "controlFamily": "Training",
+      "status": "DEGRADED",
+      "expectedState": "Override operators stay current on quarterly intervention training.",
+      "observedState": "Three operators are beyond the training refresh window.",
+      "gapWindowHours": 21,
+      "blocksOverride": false
+    },
+    {
+      "id": "gap-handoff-playbook",
+      "snapshotId": "route-yard",
+      "resourcePath": "yard-west override handoff packet",
+      "scope": "ROUTE",
+      "controlFamily": "Handoff",
+      "status": "REMOVED",
+      "expectedState": "Active route playbook contains the current override contact tree and post-event handoff path.",
+      "observedState": "Published playbook is missing the updated field escalation path.",
+      "gapWindowHours": 28,
+      "blocksOverride": true
+    }
+  ]
+}
