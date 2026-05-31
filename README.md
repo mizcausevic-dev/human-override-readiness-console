@@ -1,3 +1,15 @@
+> ## ⚠️ Archived 2026-05-31 — superseded
+>
+> This repo is archived. The shape it set out to solve was already covered (and shipped) on the apex tool surface:
+>
+> **→ [https://kineticgain.com/trust/ai-tabletop/](https://kineticgain.com/trust/ai-tabletop/)** — AI Incident Tabletop Kit + AI System Card (human-review-point field)
+>
+> The apex surface is browser-only, no login, no telemetry, vanilla JS, aligned in vocabulary with NIST AI RMF / EU AI Act / ISO 42001 / SOC 2 / ISO 27018 / GDPR (never "compliant"/"certified" without external attestation).
+>
+> No migration needed — this repo never had production users; it was Codex-shipped scaffolding that landed in parallel with (and unaware of) the apex executive-tools layer.
+
+---
+
 # Human Override Readiness Console
 
 [![CI](https://github.com/mizcausevic-dev/human-override-readiness-console/actions/workflows/ci.yml/badge.svg)](https://github.com/mizcausevic-dev/human-override-readiness-console/actions/workflows/ci.yml)
